@@ -22,13 +22,14 @@ export default function ChatBox({ currentUser, messages, setMessagess }) {
                 sender: "Yo",
             })
 
-            setMessagess(prevMessages => [
-                ...prevMessages,
-                {
-                    sender: "Yo",
-                    contenido: message,
-                }
-            ]);
+            // Eliminado el setMessagess manual para evitar duplicados
+            // setMessagess(prevMessages => [
+            //     ...prevMessages,
+            //     {
+            //         sender: "Yo",
+            //         contenido: message,
+            //     }
+            // ]);
 
 
             const response = await axios.post('https://localhost:7005/api/chat/newMensaje', newMessage,

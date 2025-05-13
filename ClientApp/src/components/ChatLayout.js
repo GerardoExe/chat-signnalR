@@ -47,6 +47,10 @@ export default function ChatLayout() {
         }
       );
 
+      if (!Array.isArray(response.data)) {
+        throw new TypeError("La respuesta no es un array.");
+      }
+
       var aux = response.data.map((msg) => {
         if (msg.id_emisor == contact.id_user) {
           return {
@@ -64,7 +68,7 @@ export default function ChatLayout() {
       console.log(aux);
       setMessagess(aux);
     } catch (error) {
-      setMessagess(null);
+      setMessagess([]); // Cambiado de null a un array vacío
 
       console.error("Error al obtener los mensajes:", error);
     }
